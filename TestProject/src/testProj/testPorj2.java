@@ -10,18 +10,18 @@ public class testPorj2 {
 	
 	public static void main(String[] args)
 	{
-		String pblocation=null;
-		ConcurrentHashMap pbSlot = new ConcurrentHashMap();
-		pbSlot.put("AGV501", "PB.016");
+		String location=null;
+		ConcurrentHashMap Slot = new ConcurrentHashMap();
+		Slot.put("BBB", "016");
 		Map<String, Integer> parallelBufferDrivetime = new HashMap<String, Integer>();
-		parallelBufferDrivetime.put("PB.009", -1);
-		parallelBufferDrivetime.put("PB.010", -1);
-		parallelBufferDrivetime.put("PB.011", -1);
-		parallelBufferDrivetime.put("PB.012", -1);
-		parallelBufferDrivetime.put("PB.013", -1);
-		parallelBufferDrivetime.put("PB.014", -1);
-		parallelBufferDrivetime.put("PB.015", -1);
-		parallelBufferDrivetime.put("PB.016", -1);
+		parallelBufferDrivetime.put("009", 150);
+		parallelBufferDrivetime.put("010", 62);
+		parallelBufferDrivetime.put("011", 32);
+		parallelBufferDrivetime.put("012", 52);
+		parallelBufferDrivetime.put("013", 50);
+		parallelBufferDrivetime.put("014", 78);
+		parallelBufferDrivetime.put("015", 15);
+		parallelBufferDrivetime.put("016", 41);
 		
 		ArrayList<Integer> driveTime =new  ArrayList<Integer>(parallelBufferDrivetime.values());
 		if (driveTime != null && driveTime.size() > 0) {
@@ -29,9 +29,8 @@ public class testPorj2 {
 			for (int i = 0; i < driveTime.size(); i++) {
                 for (String pb : parallelBufferDrivetime.keySet()) {
                     if (parallelBufferDrivetime.get(pb).equals(driveTime.get(i))) {
-                        pblocation = pb;//PB.016
-                        //added by Bran for oracle check
-                        if(driveTime.get(i)==-1 && pbSlot.containsValue(pblocation))
+                        location = pb;//PB.016
+                        if(driveTime.get(i)==-1 && Slot.containsValue(location))
                         {
                             continue;
                         }else {
@@ -39,8 +38,9 @@ public class testPorj2 {
                         }
                     }
                 }
-                if (!pblocation.isEmpty() && !pbSlot.containsValue(pblocation)) {
-                    pbSlot.put("AGV502", pblocation);
+                if (!location.isEmpty() && !Slot.containsValue(location)) {
+                	System.out.println("reserved " + location);
+                    Slot.put("AAA", location);
                     break;
                 }
 		}
